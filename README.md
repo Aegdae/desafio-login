@@ -48,7 +48,6 @@ O projeto estará disponível em http://127.0.0.1:8000/.
 ## 🚀 Estrutura do Projeto
   ```plaintext
     auth_system/
-    auth_system/
         __init__.py
         asgi.py
         settings.py
