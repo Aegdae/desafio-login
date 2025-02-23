@@ -18,7 +18,7 @@ Este é um projeto desenvolvido em Django que implementa um sistema de login e r
 ### 1. Clonar o Repositório
 ```bash
 git clone https://github.com/Aegdae/desafio-login.git
-cd seu-repositorio
+cd desafio-login
 
 ```
 
