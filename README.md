@@ -56,7 +56,7 @@ O projeto estará disponível em http://127.0.0.1:8000/.
     static/
         script.js
         style.css
-    user/
+    users/
         migrations/
         templates/
             login.html
