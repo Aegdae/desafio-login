@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Register</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Registrar</h2>
+        <form method="post">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <input type="text" name="first_name" id="first_name" placeholder="Nome" class="input" value="{{ form.first_name.value | default:'' }}"/>
+        </div>
+        <div class="error">
+            {% for error in form.first_name.errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            <input type="email" name="email" id="email" placeholder="E-mail" class="input" value="{{ form.email.value | default:'' }}"/>
+        </div>
+        <div class="error">
+            {% for error in form.email.errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+        </div>
+
+        <div class="form-group">
+            <input type="password" name="password1" id="password1" placeholder="Senha" class="input" value="{{ form.password1.value | default:'' }}"/>
+            <a class="toggle-password" onclick="togglePassword('password1', 'eyes-icon-password1')">
+                <i class="fa-solid fa-eye" id="eyes-icon-password1"></i>
+            </a>
+        </div>
+        <div class="error">
+            {% for error in form.password1.errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+        </div>
+        
+
+        <div class="form-group">
+            <input type="password" name="password2" id="password2" placeholder="Confirmar senha" class="input" value="{{ form.password2.value | default:'' }}"/>
+            <a class="toggle-password" onclick="togglePassword('password2', 'eyes-icon-password2')">
+                <i class="fa-solid fa-eye" id="eyes-icon-password2"></i>
+            </a>
+        </div>
+        <div class="error">
+            {% for error in form.password2.errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+        </div>
+
+        <div class="submit">
+            <button type="submit" id="registerBtn" disabled>Registrar</button>
+            <a href="{% url 'login' %}">Cancelar</a>
+        </div>
+
+    </form>
+    </div>
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html>

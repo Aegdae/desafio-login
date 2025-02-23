@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Login</title>
+</head>
+<body>
+    <header>
+    </header>
+    <section>
+        <div class="container">
+        <h2>Login</h2>
+        <form method="post">
+            {% csrf_token %}
+        
+            <div class="form-group">
+                <input type="email" name="email" id="email" placeholder="E-mail" class="input" value="{{ form.email.value | default:'' }}"/>
+            </div>
+    
+            <div class="form-group">
+                <input type="password" name="password" id="password" placeholder="Senha" class="input" value="{{ form.password.value | default:'' }}"/>
+                <a class="toggle-password" onclick="togglePassword('password', 'eyes-icon')">
+                    <i class="fa-solid fa-eye" id="eyes-icon"></i>
+                </a>
+            </div>
+            {% if form.errors %}
+                <div class="alert alert-danger">
+                    {% for field, errors in form.errors.items %}
+                        {% for error in errors %}
+                            <p id="error_message">{{ error }}</p>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {% if error_message %}
+                <p id="error_message">{{ error_message }}</p>
+            {% endif %}
+        
+            <button type="submit" id="loginBtn" disabled>Entrar</button>
+        </form>
+
+        <div class="register">
+            <a href="{% url 'register' %}">Registrar</a>
+        </div>
+
+    </div>
+    </section>
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html>
